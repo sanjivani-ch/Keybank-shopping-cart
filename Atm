@@ -1,0 +1,97 @@
+package com.atm.pkg;
+
+import java.util.Scanner;
+
+class ATM
+{
+int pin=5566;
+double balance=5000;
+
+public void checkPin()
+{
+System.out.println("Please enter a pin number:");
+Scanner sc=new Scanner(System.in);
+int pinno=sc.nextInt();
+if(pinno==pin)
+{
+System.out.println("pin is correct please choose your menu");
+menu();
+}
+else{
+System.out.println("please enter correct pin number");	
+}
+}
+public void menu()
+{
+System.out.println("Enter your choice");
+System.out.println("1.check A/C Balance");
+System.out.println("2.Withdraw");
+System.out.println("3.Deposite");
+System.out.println("4.Exit");
+Scanner sc=new Scanner(System.in);
+int no=sc.nextInt();
+if(no==1)
+{
+checkBalance();
+}
+else if(no==2)
+{
+withdraw();
+}
+else if(no==3)
+{
+deposite();
+}
+else if(no==4)
+{
+System.out.println("Thanks for using ATM");
+return;
+
+}
+else
+{
+System.out.println("enter valid choice");
+}
+}
+
+private void deposite() 
+{
+System.out.println("Enter money to deposite");
+Scanner sc=new Scanner(System.in);
+int amt=sc.nextInt();
+double x1=balance+amt;
+System.out.println(+x1+" money deposite successfully");
+menu();
+}
+
+public void withdraw() 
+{
+System.out.println("please enter amount");
+Scanner sc=new Scanner(System.in);
+int amount=sc.nextInt();
+if(amount>balance)
+{
+System.out.println("insuficient amount");
+}
+else{
+balance=balance-amount;
+System.out.println("collect your balance"+amount);
+System.out.println("Total balance is:"+balance);
+}
+menu();
+}
+public void checkBalance() 
+{
+System.out.println("your current balance is:"+balance);
+menu();
+}
+}
+public class AtmClass {
+
+public static void main(String[] args) {
+ATM atm=new ATM();
+atm.checkPin();
+
+	}
+}
+
